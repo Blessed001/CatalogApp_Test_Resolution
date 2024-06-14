@@ -7,7 +7,10 @@
         </div>
         <div class="p-field">
           <label for="icon">Icon</label>
-          <p-dropdown id="icon" [options]="iconOptions" formControlName="icon" optionLabel="label"></p-dropdown>
+          <p-dropdown id="icon" 
+          [options]="iconOptions" 
+          formControlName="icon" optionLabel="label"
+          ></p-dropdown>
         </div>
         <div class="p-field">
           <button pButton type="submit" label="Save" [disabled]="form.invalid"></button>

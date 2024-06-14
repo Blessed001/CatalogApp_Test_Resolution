@@ -16,6 +16,7 @@ export class EditorPanelComponent implements OnChanges {
   form: FormGroup; 
 
   iconOptions = [
+    { label: 'Click to select an icon', value: '' },
     { label: 'File', value: 'pi pi-file' },
     { label: 'Folder', value: 'pi pi-folder' },
     { label: 'Calendar', value: 'pi pi-calendar' },
@@ -30,17 +31,17 @@ export class EditorPanelComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
+    const currentIcon = this.iconOptions.find(i => this.selectedNode && i.value == this.selectedNode.icon)
     if (changes['selectedNode'] && this.selectedNode) {
       this.form.patchValue({
         label: this.selectedNode.label,
-        icon: this.selectedNode.icon
+        icon: currentIcon == undefined ? this.iconOptions[0] : currentIcon
       });
     }
   }
 
   saveChangesHandler() {
-    const iconValue = this.form.value.icon?.value !== undefined ? this.form.value.icon.value : this.form.value.icon;
-    const updatedNode = { ...this.selectedNode, label: this.form.value.label, icon: iconValue };
+    const updatedNode = { ...this.selectedNode, label: this.form.value.label, icon:  this.form.value.icon.value };
     this.onSaveNodeChange.emit(updatedNode);
   }
 }
