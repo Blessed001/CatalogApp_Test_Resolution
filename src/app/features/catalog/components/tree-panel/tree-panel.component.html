@@ -1,0 +1,25 @@
+<div class="p-fluid buttons-container">
+    <div class="p-field">
+      <button pButton label="Create 50 Folders" (click)="createCatalogItems(folderType)"   [disabled]="selectedNode && (selectedNode?.type == itemType)"></button>
+    </div>
+    <div class="p-field">
+      <button pButton label="Create 50 Elements" (click)="createCatalogItems(itemType)" [disabled]="!selectedNode || !(selectedNode?.type == folderType)"></button>
+    </div>
+  </div>
+  
+   <div class="card flex justify-content-center">
+    <p-tree class="w-full md:w-30rem"
+      [value]="$catalog | async"
+      selectionMode="single"
+      [(selection)]="selectedNode"
+      [draggableNodes]="true"
+      [droppableNodes]="true"
+      draggableScope="self"
+      droppableScope="self"
+      (onNodeSelect)="onNodeSelectHandler($event)"
+      (onNodeDrop)="onNodeDropHandler($event)"
+      (onNodeExpand)="onNodeExpandHandler($event)"
+      (onNodeCollapse)="onNodeExpandHandler($event)"
+      >
+    </p-tree>
+</div>

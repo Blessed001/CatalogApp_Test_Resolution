@@ -1,0 +1,21 @@
+<div *ngIf="selectedNode">
+    <form [formGroup]="form" (ngSubmit)="saveChangesHandler()">
+      <div class="edit-form-container p-fluid">
+        <div class="p-field">
+          <label for="label">Label</label>
+          <input id="label" type="text" pInputText formControlName="label">
+        </div>
+        <div class="p-field">
+          <label for="icon">Icon</label>
+          <p-dropdown id="icon" [options]="iconOptions" formControlName="icon" optionLabel="label"></p-dropdown>
+        </div>
+        <div class="p-field">
+          <button pButton type="submit" label="Save" [disabled]="form.invalid"></button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="!selectedNode">
+    <p>Select a file to edit</p>
+  </div>
+  
