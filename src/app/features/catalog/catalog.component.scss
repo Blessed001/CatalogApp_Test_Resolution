@@ -22,11 +22,6 @@
 /* Responsive Styles for 780px and below */
 @media (max-width: 780px) {
   .page {
-    flex-direction: column; /* Stack elements vertically */
-  }
-
-  .page__side--right {
-    height: auto; /* Allow height to adjust based on content */
-    margin-top: 20px; /* Add margin to create space between sides */
+    flex-direction: column;
   }
 }
