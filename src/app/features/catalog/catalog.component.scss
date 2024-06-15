@@ -2,21 +2,20 @@
 .page {
     display: flex;
     height: 100vh;
-}
+    &__side {
+      flex: 1; 
+      padding: 20px;
+      overflow-y: auto; 
 
-.page__side {
-    flex: 1; 
-    padding: 20px;
-    overflow-y: auto; 
-}
+      &--left {
+        background-color: #f0f0f0;
+        border-right: 1px solid #ccc;
+    }
 
-.page__side--left {
-    background-color: #f0f0f0;
-    border-right: 1px solid #ccc;
-}
-
-.page__side--right {
-    background-color: #ffffff;
+    &--right {
+      background-color: #ffffff;
+  }
+  }
 }
 
 /* Responsive Styles for 780px and below */

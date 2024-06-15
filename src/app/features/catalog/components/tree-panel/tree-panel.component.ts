@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { NodeTypes } from 'app/shared/enums/node.enums';
 import { ICatalogNode } from 'app/shared/models/catalog.inteface';
 import { Observable } from 'rxjs';
@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-tree-panel',
   templateUrl: './tree-panel.component.html',
-  styleUrls: ['./tree-panel.component.scss']
+  styleUrls: ['./tree-panel.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class TreePanelComponent {
   @Input() $catalog: Observable<ICatalogNode[]>;

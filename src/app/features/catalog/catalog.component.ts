@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppStates } from '../../core/store/reducers';
 import * as CatalogActions from '../../core/store/actions';
@@ -11,7 +11,8 @@ import { NodeTypes } from 'app/shared/enums/node.enums';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class CatalogComponent implements OnInit, OnDestroy{
   $catalog!: Observable<ICatalogNode[]>;

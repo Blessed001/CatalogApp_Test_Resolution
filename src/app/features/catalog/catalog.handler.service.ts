@@ -34,7 +34,7 @@ export class CatalogHandlerService {
     const filteredCatalog = (isCopy || isNew) ? this.currentState : this.removeNodeByKey(this.currentState, originalCatalogNode.key);
 
     if (isCopy) {
-      let catalogNodeToCopy = newCatalogNode.children.find(c => c.key == originalCatalogNode.key)
+      const catalogNodeToCopy = newCatalogNode.children.find(c => c.key == originalCatalogNode.key)
       const catalogNode = this.findCatalogNodeByKey(this.currentState, newCatalogNode.key)
       const catalogNodeChildren = this.addCatalogNodeAtIndex(index, catalogNodeToCopy, isCopy, [...catalogNode.children])
       newCatalogNode.children = catalogNodeChildren;
@@ -70,7 +70,7 @@ export class CatalogHandlerService {
 
     if (isCopy) {
       node.label = node.label + '-COPY'
-      node.key = node.key + '-copy'
+      node.key = uuidv4();
     }
 
     return [
@@ -95,27 +95,13 @@ export class CatalogHandlerService {
     const catalog: ICatalogNode[] = [];
 
     for (let i = 0; i < quantity; i++) {
-      const uuid = uuidv4();
-
-      let icon = '';
-      let type = '';
-      let children = [];
-
-      if (isFolder) {
-        icon = 'pi pi-folder';
-        type = NodeTypes.Folder.toString();
-      } else {
-        type = NodeTypes.Item.toString();
-        children = undefined;
-      }
-
       const item: ICatalogNode = {
-        key: uuid,
+        key: uuidv4(),
         label: `${this.generateRandomNodeName()}`,
-        icon: icon,
-        type: type,
+        icon: isFolder?'pi pi-folder':'',
+        type: isFolder?NodeTypes.Folder.toString():NodeTypes.Item.toString(),
         expanded: false,
-        children: children
+        children: isFolder?[]:undefined
       };
 
       catalog.push(item);

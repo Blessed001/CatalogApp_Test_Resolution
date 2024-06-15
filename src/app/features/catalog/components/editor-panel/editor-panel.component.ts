@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ICatalogNode } from 'app/shared/models/catalog.inteface';
 
@@ -6,7 +6,8 @@ import { ICatalogNode } from 'app/shared/models/catalog.inteface';
 @Component({
   selector: 'app-editor-panel',
   templateUrl: './editor-panel.component.html',
-  styleUrls: ['./editor-panel.component.scss']
+  styleUrls: ['./editor-panel.component.scss'],
+  changeDetection:ChangeDetectionStrategy.OnPush
 })
 export class EditorPanelComponent implements OnChanges {
   @Input() selectedNode: ICatalogNode;
